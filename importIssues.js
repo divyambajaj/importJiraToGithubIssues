@@ -198,21 +198,9 @@ const getMilestone = async (URL, config) => {
 };
 
 const getAssigneeName = jiraUserName => {
+  // add the mapping of jira users withgithub username. Below is the example.
   const mappingList = {
-    'Ariel Albornoz': 'scg-aalbornoz',
-    'Chris Beacham': 'Moonraft-Team',
-    'Chris Gomez': 'scg-cgomez',
-    'Divyam Bajaj': 'divyambajaj',
-    'Eliseo Mendoza': 'scg-emendoza',
-    'Joel George': 'Moonraft-Team',
-    'Narendra Krishna Shenvi Desai': 'narendradesai',
-    'Pradeep Kumar V L': 'venugopp',
-    'Prasan Kumar': 'prasan17',
-    'Richa Kumari': 'Moonraft-Team',
-    'Robynn Cannon': 'Moonraft-Team',
-    'Seth Heng': 'Moonraft-Team',
-    'Suady Villagarcia': 'scg-svillaga',
-    'Wilfred Arambhan': 'wilfi',
+    'Test Jira Account Username': 'Test GitHub Account',
   };
 
   var githubUserName = mappingList[jiraUserName]

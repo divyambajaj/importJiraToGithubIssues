@@ -6,7 +6,7 @@ First, create a full export to XML as described in this guide from your JIRA Acc
 
 You'll need the exported `abc.xml` from JIRA to upload the issues to your GitHub repository using the GitHub API.
 
-Add the Exported `abc.xml` file to your codebase's root directory.
+Add the Exported `abc.xml` file to "importJiraToGithubIssues" root directory.
 
 ## Run the import to GitHub
 

@@ -12,7 +12,8 @@ try {
   importIssues (
     configValues.gitHubData,
     jsonData,
-    configValues.jiraUserDetails
+    configValues.jiraUserDetails,
+    configValues.jiraUsernameMapping
   );
 } catch (error) {
   console.log (

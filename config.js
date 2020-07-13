@@ -7,6 +7,8 @@ module.exports = () => {
     token: '',
   };
 
+  var jiraUsernameMapping = {};
+
   gitHubData.user = prompt ('Enter Github Username: ');
   gitHubData.repo = prompt ('Enter Github Repo: ');
   gitHubData.token = prompt ('Enter Github Token: ');
@@ -15,7 +17,15 @@ module.exports = () => {
     'Enter File Name (Note: add file in your root directory): '
   );
 
-  var configValues = {gitHubData, fileName};
+  // add the mapping of jira users withgithub username. Below is the example.
+  jiraUsernameMapping = {
+    'Jira Account Username': 'GitHub Account',
+  };
+
+  if (Object.keys (jiraUsernameMapping).length === 0) {
+    jiraUsernameMapping = false;
+  }
+  var configValues = {gitHubData, fileName, jiraUsernameMapping};
 
   const jiraUserDetails = downloadJiraAttachement ();
   configValues = {...configValues, jiraUserDetails: jiraUserDetails};

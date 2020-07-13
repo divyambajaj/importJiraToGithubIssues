@@ -5,7 +5,12 @@ const request = require ('request');
 
 const mileStoneObject = {};
 
-module.exports = async (github, jsonData, jiraUserDetails) => {
+module.exports = async (
+  github,
+  jsonData,
+  jiraUserDetails,
+  jiraUsernameMapping
+) => {
   try {
     const URL = `https://api.github.com/repos/${github.user}/${github.repo}`;
 
@@ -62,8 +67,15 @@ module.exports = async (github, jsonData, jiraUserDetails) => {
       }
 
       // parsing jira assignees to github
-      if (jiraIssue['assignee'] && Object.keys (jiraIssue['assignee']).length) {
-        var githubUsername = getAssigneeName (jiraIssue['assignee']['_text']);
+      if (
+        jiraIssue['assignee'] &&
+        Object.keys (jiraIssue['assignee']).length &&
+        jiraUsernameMapping
+      ) {
+        var githubUsername = getAssigneeName (
+          jiraIssue['assignee']['_text'],
+          jiraUsernameMapping
+        );
         if (githubUsername !== null)
           issue.assignees = [...issue.assignees, githubUsername];
       }
@@ -197,14 +209,9 @@ const getMilestone = async (URL, config) => {
   });
 };
 
-const getAssigneeName = jiraUserName => {
-  // add the mapping of jira users withgithub username. Below is the example.
-  const mappingList = {
-    'Test Jira Account Username': 'Test GitHub Account',
-  };
-
-  var githubUserName = mappingList[jiraUserName]
-    ? mappingList[jiraUserName]
+const getAssigneeName = (jiraUserName, jiraUsernameMapping) => {
+  var githubUserName = jiraUsernameMapping[jiraUserName]
+    ? jiraUsernameMapping[jiraUserName]
     : null;
 
   return githubUserName;

@@ -10,9 +10,11 @@ Add the Exported `abc.xml` file to "importJiraToGithubIssues" root directory.
 
 ## Run the import to GitHub
 
-Step I: Run npm install.
+Step I: Download the code or do "git clone https://github.com/divyambajaj/importJiraToGithubIssues.git"
 
-Step II: Run node index.js to use the script
+Step II: Run npm install.
+
+Step III: Run node index.js to use the script
 
 ```
 Add the following information from your terminal:
